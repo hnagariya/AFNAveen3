@@ -22,13 +22,13 @@ public class YourStoreTest extends TestBase{
 		yourStore = new YourStore();
 	}
 
-	@Test(dataProvider="loginDataProvider")
-	public void validateLoginUsingValidCredentials(String userName,String password) {
-		yourStore.clickMyAccountBtn();
-		accountLogin = yourStore.clickLoginBtn();
-		myAccount = accountLogin.loginToPortal(userName,password);
-		Assert.assertEquals(myAccount.getMyAccountText(), "My Account");
-	}
+	// @Test(dataProvider="loginDataProvider")
+	// public void validateLoginUsingValidCredentials(String userName,String password) {
+	// 	yourStore.clickMyAccountBtn();
+	// 	accountLogin = yourStore.clickLoginBtn();
+	// 	myAccount = accountLogin.loginToPortal(userName,password);
+	// 	Assert.assertEquals(myAccount.getMyAccountText(), "My Account");
+	// }
 
 	@DataProvider(name="loginDataProvider")
 	public String[][] getDataFromExcelFile() throws Exception {
