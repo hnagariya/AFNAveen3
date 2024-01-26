@@ -139,15 +139,13 @@
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>2.22.1</version>
-					<!-- 		<configuration>
-						 Sets the VM argument line
-					used for unit tests
-						arerun. 
+					<configuration>
+						<!--Sets the VM argument line used for unit tests arerun. -->
 						<suiteXmlFiles>
-					<suiteXmlFile>${XmlFile}</suiteXmlFile>
+							<suiteXmlFile>${XmlFile}</suiteXmlFile>
 
 						</suiteXmlFiles>
-					</configuration> -->
+					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
@@ -171,30 +169,7 @@
 					<artifactId>maven-project-info-reports-plugin</artifactId>
 					<version>3.0.0</version>
 				</plugin>
-				<plugin>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.0.1</version>
-					<executions>
-						<execution>
-							<id>copy-resources</id>
-							<!-- here the phase you need -->
-							<phase>validate</phase>
-							<goals>
-								<goal>copy-resources</goal>
-							</goals>
-							<configuration>
-								<outputDirectory>
-									C:/Users/Neelam Nagariya/eclipse-workspace/AFNaveen3/target/failed-testng.xml</outputDirectory>
-								<resources>
-									<resource>
-										<directory>src/</directory>
-										<filtering>true</filtering>
-									</resource>
-								</resources>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
+
 			</plugins>
 		</pluginManagement>
 	</build>
