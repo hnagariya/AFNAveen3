@@ -22,7 +22,7 @@ public class YourStoreTest extends TestBase{
 		yourStore = new YourStore();
 	}
 
-	@Test(dataProvider="loginDataProvider") @Ignore
+	@Test(dataProvider="loginDataProvider")
 	public void validateLoginUsingValidCredentials(String userName,String password) {
 		yourStore.clickMyAccountBtn();
 		accountLogin = yourStore.clickLoginBtn();
