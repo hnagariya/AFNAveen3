@@ -38,6 +38,7 @@ public class YourStoreTest extends TestBase {
 		Assert.assertEquals(myAccount.getMyAccountText(), "My Account");
 	}
 
+
 	@DataProvider(name = "loginDataProvider")
 	public String[][] getDataFromExcelFile() throws Exception {
 		logger.info("data provider get executed");
