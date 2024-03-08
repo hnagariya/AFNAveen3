@@ -17,7 +17,7 @@ public class Utils extends TestBase{
 		System.out.println(timeStamp);
 
 		// take screenshot
-		File screenshotFile = ((TakesScreenshot) wd).getScreenshotAs(OutputType.FILE);
+		File screenshotFile = ((TakesScreenshot) wd.get()).getScreenshotAs(OutputType.FILE);
 
 		// save screenshot
 		try {

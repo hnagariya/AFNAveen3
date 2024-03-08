@@ -13,7 +13,7 @@ import com.naveenautomationlabs.AFramework.utils.Utils;
 
 public class YourStore extends TestBase{
 	public YourStore() {
-		PageFactory.initElements(wd, this);
+		PageFactory.initElements(wd.get(), this);
 	}
 
 	@FindBy(css = "ul.list-inline>li:nth-of-type(2) a")
@@ -54,7 +54,7 @@ public class YourStore extends TestBase{
 	}
 
 	public LaptopsNotebook mouseHoverLaptopsNotebookLink() {
-		Actions action = new Actions(wd);
+		Actions action = new Actions(wd.get());
 		action.moveToElement(laptopNotebookLink).perform();
 		action.moveToElement(showAllLaptopsNotebookLink).perform();
 		action.click().perform();
@@ -74,8 +74,8 @@ public class YourStore extends TestBase{
 			}
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 			element.click();
-			listOfClick.add(wd.getTitle().equals(itemName));
-			wd.navigate().back();
+			listOfClick.add(wd.get().getTitle().equals(itemName));
+			wd.get().navigate().back();
 		}
 		for (boolean b : listOfClick) {
 			if (!b) {

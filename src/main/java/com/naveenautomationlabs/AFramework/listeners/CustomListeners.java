@@ -10,11 +10,11 @@ import com.naveenautomationlabs.AFramework.utils.Utils;
 public class CustomListeners extends TestBase implements ITestListener {
 	@Override
 	public void onTestStart(ITestResult result) {
-		logger.info("Test execution started for"+result.getMethod().getMethodName());
+		logger.info("Test execution started for"+result.getMethod().getMethodName()+"********************************");
 	}
 
 	  public void onTestSuccess(ITestResult result) {
-		  logger.info("Test"+result.getMethod().getMethodName()+"Passed");
+		  logger.info("Test"+result.getMethod().getMethodName()+"Passed!!!!!!!!!!!!!!!!!!!!!!!!");
 		  
 	  }
 

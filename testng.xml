@@ -6,7 +6,7 @@
 <listener class-name="com.naveenautomationlabs.AFramework.listeners.TransformerForRetry"></listener>
 <listener class-name="com.naveenautomationlabs.AFramework.listeners.ExtentReportListener"></listener>
 </listeners>
-  <test thread-count="5" name="Test">
+  <test thread-count="5" parallel = "methods" name="Test">
   
     <classes>
       <class name="com.naveenautomationlabs.AFramework.tests.YourStoreTest"/>

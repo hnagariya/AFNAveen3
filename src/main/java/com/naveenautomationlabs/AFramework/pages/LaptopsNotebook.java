@@ -10,7 +10,7 @@ import com.naveenautomationlabs.AFramework.base.TestBase;
 
 public class LaptopsNotebook extends TestBase {
 	public LaptopsNotebook() {
-		PageFactory.initElements(wd, this);
+		PageFactory.initElements(wd.get(), this);
 	}
 
 	@FindBy(css = "div.product-thumb div.caption a")

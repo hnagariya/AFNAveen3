@@ -20,12 +20,11 @@ public class LaptopsNotebookTest extends TestBase{
 	}
 
 	@Test 
-	@Ignore
 	public void validateClickingOnListOfLaptopsNotebookGoTORespectivePage() {
 		laptopsNotebook = yourStore.mouseHoverLaptopsNotebookLink();
 		String nameOfProduct = "MacBook";
 		laptopsNotebook.checkClickOnProductOfLaptopsNotebookGoRespectivePage(nameOfProduct);
-		Assert.assertEquals(wd.getTitle(), nameOfProduct);
+		Assert.assertEquals(wd.get().getTitle(), nameOfProduct);
 	}
 
 	@AfterMethod
