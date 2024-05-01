@@ -75,9 +75,9 @@ public class TestBase {
 				e.printStackTrace();
 			}
 		} else {
-			String browser = System.getProperty("Browsers");
-			switch (browser) {
-			//switch (DEFAULT_BROWSER.getBrowserName()) {
+			//String browser = System.getProperty("Browsers");
+			//switch (browser) {
+			switch (DEFAULT_BROWSER.getBrowserName()) {
 			case "Chrome":
 				wd.set(WebDriverManager.chromedriver().create());
 				break;
