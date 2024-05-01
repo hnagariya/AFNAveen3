@@ -2,11 +2,13 @@ package com.naveenautomationlabs.AFramework.tests;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
 
+import org.apache.poi.poifs.crypt.temp.AesZipFileZipEntrySource;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -15,6 +17,7 @@ import org.testng.annotations.Test;
 
 import com.naveenautomationlabs.AFramework.base.TestBase;
 import com.naveenautomationlabs.AFramework.pages.AccountLogin;
+import com.naveenautomationlabs.AFramework.pages.Employee;
 import com.naveenautomationlabs.AFramework.pages.MyAccount;
 import com.naveenautomationlabs.AFramework.pages.YourStore;
 import com.naveenautomationlabs.AFramework.utils.ExcelUtils;
@@ -38,7 +41,6 @@ public class YourStoreTest extends TestBase {
 		Assert.assertEquals(myAccount.getMyAccountText(), "My Account");
 	}
 
-
 	@DataProvider(name = "loginDataProvider")
 	public String[][] getDataFromExcelFile() throws Exception {
 		logger.info("data provider get executed");
@@ -54,11 +56,13 @@ public class YourStoreTest extends TestBase {
 		return virtualSheet;
 	}
 
-	@Test
-	public void jdbcConnection() {
+	@DataProvider(name = "databaseData")
+	public Object[] jdbcConnection() {
+		ResultSet rs = null;
 		String url = "jdbc:sqlserver://Neelam;databaseName=HR;integratedSecurity=true;encrypt=false";
 		String userName = "sa";
 		String Password = "madhu";
+		ArrayList<Employee> al = new ArrayList<>();
 		try {
 			Connection conn = DriverManager.getConnection(url);
 			// to insert data single row
@@ -72,22 +76,27 @@ public class YourStoreTest extends TestBase {
 			// to get data
 			String sql = "SELECT * FROM employees;";
 			Statement st2 = conn.createStatement();
-			ResultSet rs = st2.executeQuery(sql);
-			int count = 0;
+			rs = st2.executeQuery(sql);
 			while (rs.next()) {
-				count++;
-				String name = rs.getString("email");
-				int i = rs.getInt("employee_id");
-				System.out.println("Employee id: " + i + " email is : " + name);
+				Employee em = new Employee();
+				em.setEmail(rs.getString("email"));
+				em.setEmployee_id(rs.getInt("employee_id"));
+				al.add(em);
 
 			}
 			System.out.println("Connection established");
-
+			System.out.println(Arrays.toString(al.toArray()));
 		} catch (SQLException e) {
 			System.out.println("Connection failed");
 			e.printStackTrace();
 		}
+		Object[] a=al.toArray();
+		return a;
+	}
 
+	@Test(dataProvider = "databaseData", enabled=false)
+	public void checkForDbData(Employee em) {
+		System.out.println("Email is: " + em.getEmail() + " id is : " + em.getEmployee_id());
 	}
 
 	@Test
@@ -99,8 +108,6 @@ public class YourStoreTest extends TestBase {
 	public void validateFooterDisplayImagesMoving() {
 		Assert.assertFalse(yourStore.checkFooterDisplayImagesMoving(), "Footer Display images are not moving");
 	}
-
-	
 
 	@Test
 	public void validateDisplayImageIsMovingOnMainPage() {

@@ -32,7 +32,7 @@ public class TestBase {
 	private EventFiringWebDriver eDriver;
 	private Browsers DEFAULT_BROWSER = Browsers.CHROME;
 	private Env DEFAULT_ENV = Env.PROD;
-	private static final boolean RUN_ON_GRID = true;
+	private static final boolean RUN_ON_GRID = false;
 	public static ThreadLocal<WebDriver> wd = new ThreadLocal<>();
 
 	public TestBase() {
@@ -75,9 +75,9 @@ public class TestBase {
 				e.printStackTrace();
 			}
 		} else {
-			// String browser=System.getProperty("Browsers");
-			// switch (browser) {
-			switch (DEFAULT_BROWSER.getBrowserName()) {
+			String browser = System.getProperty("Browsers");
+			switch (browser) {
+			//switch (DEFAULT_BROWSER.getBrowserName()) {
 			case "Chrome":
 				wd.set(WebDriverManager.chromedriver().create());
 				break;
