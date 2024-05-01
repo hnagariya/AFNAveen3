@@ -32,7 +32,7 @@ public class TestBase {
 	private EventFiringWebDriver eDriver;
 	private Browsers DEFAULT_BROWSER = Browsers.CHROME;
 	private Env DEFAULT_ENV = Env.PROD;
-	private static final boolean RUN_ON_GRID = true;
+	private static final boolean RUN_ON_GRID = false;
 	public static ThreadLocal<WebDriver> wd = new ThreadLocal<>();
 
 	public TestBase() {
