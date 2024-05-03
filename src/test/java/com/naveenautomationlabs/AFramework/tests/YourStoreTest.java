@@ -33,7 +33,7 @@ public class YourStoreTest extends TestBase {
 		yourStore = new YourStore();
 	}
 
-	@Test(dataProvider = "loginDataProvider")
+	@Test(dataProvider = "loginDataProvider",groups="smoke")
 	public void validateLoginUsingValidCredentials(String userName, String password) {
 		yourStore.clickMyAccountBtn();
 		accountLogin = yourStore.clickLoginBtn();
@@ -104,7 +104,7 @@ public class YourStoreTest extends TestBase {
 		Assert.assertTrue(yourStore.ClickOnDisplayItemOnMainPage());
 	}
 
-	@Test
+	@Test(groups= "smoke")
 	public void validateFooterDisplayImagesMoving() {
 		Assert.assertFalse(yourStore.checkFooterDisplayImagesMoving(), "Footer Display images are not moving");
 	}

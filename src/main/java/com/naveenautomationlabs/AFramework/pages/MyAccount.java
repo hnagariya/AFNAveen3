@@ -8,7 +8,7 @@ import com.naveenautomationlabs.AFramework.base.TestBase;
 
 public class MyAccount extends TestBase{
 	public MyAccount() {
-		PageFactory.initElements(wd.get(), this);
+		PageFactory.initElements(wd, this);
 	}
 	@FindBy (css="a#wishlist-total span")
 	WebElement wishListBtn;

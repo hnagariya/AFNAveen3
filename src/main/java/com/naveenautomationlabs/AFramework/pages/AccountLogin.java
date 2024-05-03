@@ -7,7 +7,7 @@ import com.naveenautomationlabs.AFramework.base.TestBase;
 
 public class AccountLogin extends TestBase {
 	public AccountLogin() {
-		PageFactory.initElements(wd.get(), this);
+		PageFactory.initElements(wd, this);
 	}
 
 	@FindBy(id = "input-email")

@@ -31,7 +31,7 @@ public class MyWishListTest extends TestBase {
 	public void validateGettingCellElementFromTable() {
 		yourStore.clickMyAccountBtn();
 		accountLogin = yourStore.clickLoginBtn();
-		myAccount = accountLogin.loginToPortal("riti@gmail.com","Password1");
+		myAccount = accountLogin.loginToPortal("riti@gmail.com","password1");
 		myWishList=myAccount.clickWishListBtn();
 		String s= myWishList.getCellElementFromTable(MyWishListTable.PRODUCT_NAME,"Product 15").getText();
 		System.out.println(s);

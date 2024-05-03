@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-<listeners>
-<listener class-name="com.naveenautomationlabs.AFramework.listeners.CustomListeners"></listener>
-<listener class-name="com.naveenautomationlabs.AFramework.listeners.TransformerForRetry"></listener>
-<listener class-name="com.naveenautomationlabs.AFramework.listeners.ExtentReportListener"></listener>
-</listeners>
-  <test thread-count="5" parallel = "methods" name="Test">
-  
-    <classes>
-      <class name="com.naveenautomationlabs.AFramework.tests.YourStoreTest"/>
-      <class name="com.naveenautomationlabs.AFramework.tests.MyWishListTest"/>
-      <class name="com.naveenautomationlabs.AFramework.tests.LaptopsNotebookTest"/>
-    </classes>
-  </test> <!-- Test -->
+	<listeners>
+		<listener
+			class-name="com.naveenautomationlabs.AFramework.listeners.CustomListeners"></listener>
+		<listener
+			class-name="com.naveenautomationlabs.AFramework.listeners.TransformerForRetry"></listener>
+		<listener
+			class-name="com.naveenautomationlabs.AFramework.listeners.ExtentReportListener"></listener>
+	</listeners>
+	<test thread-count="1" name="Test">
+		<groups>
+			<run>
+				<include name="smoke" />
+			</run>
+		</groups>
+
+
+		<classes>
+			<class
+				name="com.naveenautomationlabs.AFramework.tests.YourStoreTest" />
+			<class
+				name="com.naveenautomationlabs.AFramework.tests.MyWishListTest" />
+			<class
+				name="com.naveenautomationlabs.AFramework.tests.LaptopsNotebookTest" />
+		</classes>
+
+	</test> <!-- Test -->
 </suite> <!-- Suite -->

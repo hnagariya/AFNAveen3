@@ -12,7 +12,7 @@ public class MyWishList extends TestBase{
 		if (indexOfColumn < 0) {
 			throw new NoSuchElementException();
 		}
-		List<WebElement> rowsWebElement = wd.get().findElements(By.cssSelector("div.table-responsive tbody tr"));
+		List<WebElement> rowsWebElement = wd.findElements(By.cssSelector("div.table-responsive tbody tr"));
 		for (int i = 0; i < rowsWebElement.size(); i++) {
 			List<WebElement> cells = rowsWebElement.get(i).findElements(By.cssSelector("td"));
 			if (cells.get(2).getText().equals(ModelName)) {
@@ -24,7 +24,7 @@ public class MyWishList extends TestBase{
 
 	// Find the index of column that we r interested in
 	public int returnIndexOfColumn(MyWishListTable columnName) {
-		List<WebElement> headers = wd.get().findElements(By.cssSelector("div.table-responsive thead tr td"));
+		List<WebElement> headers = wd.findElements(By.cssSelector("div.table-responsive thead tr td"));
 		for (WebElement headerElement : headers) {
 			if (headerElement.getText().equals(columnName.value)) {
 				return headers.indexOf(headerElement);

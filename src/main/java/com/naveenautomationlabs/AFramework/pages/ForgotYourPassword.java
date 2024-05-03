@@ -8,7 +8,7 @@ import com.naveenautomationlabs.AFramework.base.TestBase;
 
 public class ForgotYourPassword extends TestBase {
 	public ForgotYourPassword() {
-		PageFactory.initElements(wd.get(), this);
+		PageFactory.initElements(wd, this);
 	}
 
 	@FindBy(id = "input-email")

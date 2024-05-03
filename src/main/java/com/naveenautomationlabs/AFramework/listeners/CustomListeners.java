@@ -21,6 +21,7 @@ public class CustomListeners extends TestBase implements ITestListener {
 	  @Override
 	  public void onTestFailure(ITestResult result) {
 		  Utils.takeScreenShot (result.getMethod().getMethodName());  
+		  System.out.println("...............");
 	  }
 
 	  @Override

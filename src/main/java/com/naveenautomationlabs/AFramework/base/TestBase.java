@@ -32,8 +32,9 @@ public class TestBase {
 	private EventFiringWebDriver eDriver;
 	private Browsers DEFAULT_BROWSER = Browsers.CHROME;
 	private Env DEFAULT_ENV = Env.PROD;
-	private static final boolean RUN_ON_GRID = false;
-	public static ThreadLocal<WebDriver> wd = new ThreadLocal<>();
+	// private static final boolean RUN_ON_GRID = false;
+//	public static ThreadLocal<WebDriver> wd = new ThreadLocal<>();
+	public static WebDriver wd;
 
 	public TestBase() {
 		prop = new Properties();
@@ -59,46 +60,54 @@ public class TestBase {
 	}
 
 	public void initialisation() {
-		if (RUN_ON_GRID) {
-			try {
-				wd.set(new RemoteWebDriver(new URL(" http://192.168.2.28:5555"), getOptions()));
-				eDriver = new EventFiringWebDriver(wd.get());
-				events = new WebDriverEvents();
-				eDriver.register(events);
-				wd.set(eDriver);
-
-				wd.get().get(DEFAULT_ENV.getUrl());
-				wd.get().manage().window().maximize();
-				wait = new WebDriverWait(wd.get(), 10);
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			//String browser = System.getProperty("Browsers");
-			//switch (browser) {
-			switch (DEFAULT_BROWSER.getBrowserName()) {
-			case "Chrome":
-				wd.set(WebDriverManager.chromedriver().create());
-				break;
-			case "Edge":
-				wd.set(WebDriverManager.edgedriver().create());
-				break;
-			case "FireFox":
-				wd.set(WebDriverManager.firefoxdriver().create());
-				break;
-			default:
-				System.out.println("Not a valid driver name");
-			}
-			eDriver = new EventFiringWebDriver(wd.get());
-			events = new WebDriverEvents();
-			eDriver.register(events);
-			wd.set(eDriver);
-
-			wd.get().get(DEFAULT_ENV.getUrl());
-			wd.get().manage().window().maximize();
-			wait = new WebDriverWait(wd.get(), 10);
+//		if (RUN_ON_GRID) {
+//			try {
+//				wd.set(new RemoteWebDriver(new URL(" http://192.168.2.28:5555"), getOptions()));
+//				eDriver = new EventFiringWebDriver(wd.get());
+//				events = new WebDriverEvents();
+//				eDriver.register(events);
+//				wd.set(eDriver);
+//
+//				wd.get().get(DEFAULT_ENV.getUrl());
+//				wd.get().manage().window().maximize();
+//				wait = new WebDriverWait(wd.get(), 10);
+//			} catch (MalformedURLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		} else {
+		// String browser = System.getProperty("Browsers");
+		// switch (browser) {
+		switch (DEFAULT_BROWSER.getBrowserName()) {
+		case "Chrome":
+			// wd.set(WebDriverManager.chromedriver().create());
+			wd = WebDriverManager.chromedriver().create();
+			break;
+		case "Edge":
+			// wd.set(WebDriverManager.edgedriver().create());
+			wd = WebDriverManager.edgedriver().create();
+			break;
+		case "FireFox":
+			// wd.set(WebDriverManager.firefoxdriver().create());
+			wd = WebDriverManager.firefoxdriver().create();
+			break;
+		default:
+			System.out.println("Not a valid driver name");
 		}
+		// }
+		// eDriver = new EventFiringWebDriver(wd.get());
+		eDriver = new EventFiringWebDriver(wd);
+		events = new WebDriverEvents();
+		eDriver.register(events);
+		// wd.set(eDriver);
+		wd = eDriver;
+
+		// wd.get().get(DEFAULT_ENV.getUrl());
+		wd.get(DEFAULT_ENV.getUrl());
+		// wd.get().manage().window().maximize();
+		wd.manage().window().maximize();
+		// wait = new WebDriverWait(wd.get(), 10);
+		wait = new WebDriverWait(wd, 10);
 	}
 
 	public MutableCapabilities getOptions() {
@@ -107,11 +116,13 @@ public class TestBase {
 
 	public void tearDown() {
 		try {
-			wd.get().quit();
+			// wd.get().quit();
+			wd.quit();
 		} finally {
-			wd.get().quit();
+			// wd.get().quit();
+			wd.quit();
 		}
-		;
+
 	}
 
 }
