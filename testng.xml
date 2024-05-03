@@ -10,13 +10,7 @@
 			class-name="com.naveenautomationlabs.AFramework.listeners.ExtentReportListener"></listener>
 	</listeners>
 	<test thread-count="1" name="Test">
-		<groups>
-			<run>
-				<include name="smoke" />
-			</run>
-		</groups>
-
-
+		
 		<classes>
 			<class
 				name="com.naveenautomationlabs.AFramework.tests.YourStoreTest" />
